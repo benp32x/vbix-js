@@ -8,24 +8,24 @@ import { parseVmInfo } from './info/parse_vm_info.js';
 // NOTE: yargs or commander can be used for more complex flag parsing
 const args = process.argv.slice(2);
 
-let hopt = false;
-let copt = false;
-let iopt = false;
-let mopt = false;
+let hopt = 0;
+let copt = 0;
+let iopt = 0;
+let mopt = 0;
 
 args.forEach(arg => {
 	switch (arg) {
 		case '-h':
-			hopt = true;
+			hopt = 1;
 			break;
 		case '-c':
-			copt = true;
+			copt = 1;
 			break;
 		case '-i':
-			iopt = true;
+			iopt = 1;
 			break;
 		case '-m':
-			mopt = true;
+			mopt = 1;
 			break;
 		default:
 			console.log(`Unknown flag: ${arg}`)
