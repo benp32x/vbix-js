@@ -8,24 +8,24 @@ import { parseVmInfo } from './info/parse_vm_info.js';
 // NOTE: yargs or commander can be used for more complex flag parsing
 const args = process.argv.slice(2);
 
-let hopt = false;
-let copt = false;
-let iopt = false;
-let mopt = false;
+let hopt = 0;
+let copt = 0;
+let iopt = 0;
+let mopt = 0;
 
 args.forEach(arg => {
 	switch (arg) {
 		case '-h':
-			hopt = true;
+			hopt = 1;
 			break;
 		case '-c':
-			copt = true;
+			copt = 1;
 			break;
 		case '-i':
-			iopt = true;
+			iopt = 1;
 			break;
 		case '-m':
-			mopt = true;
+			mopt = 1;
 			break;
 		default:
 			console.log(`Unknown flag: ${arg}`)
@@ -36,20 +36,23 @@ args.forEach(arg => {
 // EXECUTE:
 // ----------------------------------------------------------------------------
 
+// Helo:
+if (hopt) {
+	console.log("-h, help mode still under development")
+}
+
 // Info:
 if (iopt) {
 	/*
 	 * NOTE: Ensuring squential operation here does limit performance (but not 
 	 *       the user experience, given the single user use-case of vbix).
 	 * 
-	 * TODO: The current goal is to replicate the functionality of vbix Eventually 
-	 *       this data will be handled in a way tp fully leverage Node's I/O and 
-	 *       Parallelization features, but for now the goal is:
+	 * TODO: The initial goal for the info view:
 	 * 
 	 *       1.) replicate vbix's functionality
 	 *       2.) try to lay the foundation for async operations as much as possible
 	 *       3.) gradually evolve the code at each touchpoint to further align 
-	 *           with node's strengths (as opposed to simply cramming a BASH-centric 
+	 *           with the strengths of js (as opposed to simply cramming a BASH-centric 
 	 *           way of doing things into javascript.)
 	 */
 
