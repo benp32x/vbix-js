@@ -36,20 +36,23 @@ args.forEach(arg => {
 // EXECUTE:
 // ----------------------------------------------------------------------------
 
+// Helo:
+if (hopt) {
+	console.log("-h, help mode still under development")
+}
+
 // Info:
 if (iopt) {
 	/*
 	 * NOTE: Ensuring squential operation here does limit performance (but not 
 	 *       the user experience, given the single user use-case of vbix).
 	 * 
-	 * TODO: The current goal is to replicate the functionality of vbix Eventually 
-	 *       this data will be handled in a way tp fully leverage Node's I/O and 
-	 *       Parallelization features, but for now the goal is:
+	 * TODO: The initial goal for the info view:
 	 * 
 	 *       1.) replicate vbix's functionality
 	 *       2.) try to lay the foundation for async operations as much as possible
 	 *       3.) gradually evolve the code at each touchpoint to further align 
-	 *           with node's strengths (as opposed to simply cramming a BASH-centric 
+	 *           with the strengths of js (as opposed to simply cramming a BASH-centric 
 	 *           way of doing things into javascript.)
 	 */
 
